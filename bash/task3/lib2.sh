@@ -69,7 +69,6 @@ EPEL_REPO()
         echo "Epel repo is enabled!"
 }
 
-}
 fail2ban()
 {
        	yum -y install "fail2ban"
