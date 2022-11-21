@@ -18,13 +18,11 @@ sed -i "s/#Port 22/Port $1/g" /etc/ssh/sshd_config
 echo "ssh Port Changed to $1"
 }
 
-
 DISPLAY_ROOT_PERMISSION()
 {
         sed -i "s/PermitRootLogin yes/PermitRootLogin no/g" /etc/ssh/sshd_config
         systemctl reload sshd
 }
-
 
 UPDATE_FIREWALL_SELINUX()
 {
@@ -40,6 +38,7 @@ ADD_GROUP()
         groupadd Audit -g 20000
         echo " Audit group is sucssfuly added"
 }
+
 ADD_SPECIFIC_USER()
 {
 
@@ -82,6 +81,7 @@ BACKUP_REPORTS()
         echo " 0        1       *       *       1-4 "tar -czf /home/$USER/backuos/$(date +%u)-$(date +%w).tar.gz "/home/$USER/reports" " " > "/home/$USER/RBACKUP.txt"
         crontab "/home/$USER/RBACKUP.txt"
 }
+
 MANAGER_ADD()
 {
         useradd manager -u 30000
@@ -92,4 +92,21 @@ SYNC_REPORTS()
         mkdir -p /home/manager/audit/reports
         echo " 0        2       *       *       1-4 " sync /home/manager/audit/reports  /home/$USER/reports" " > "/home/$USER/sync.txt"
         crontab "/home/$USER/sync.txt"
+}
+
+show_menu()
+{
+       echo "PLease Choose An option(press q to exit)"
+       echo "1- change_port $1"
+       echo "2- DISPLAY_ROOT_PERMISSION"
+       echo "3- UPDATE_FIREWALL_SELINUX"
+       echo "4- ADD_GROUP"
+       echo "5- ADD_SPECIFIC_USER $2 $3"
+       echo "6- CREATE_REPORTS"
+       echo "7- UPDATE_SYSTEM"
+       echo "8- EPEL_REPO"
+       echo "9- fail2ban"
+       echo "10- BACKUP_REPORTS"
+       echo "11- MANAGER_ADD"
+       echo "12- SYNC_REPORTS"
 }
