@@ -69,6 +69,13 @@ EPEL_REPO()
         echo "Epel repo is enabled!"
 }
 
+}
+fail2ban()
+{
+       	yum -y install "fail2ban"
+	systemctl enable "fail2ban" 
+       	systemctl start "fail2ban"	
+}
 
 BACKUP_REPORTS()
 {
