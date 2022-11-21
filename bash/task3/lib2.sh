@@ -78,7 +78,7 @@ fail2ban()
 BACKUP_REPORTS()
 {
         mkdir -p  /home/$USER/backups
-        echo " 0        1       *       *       1-4 "tar -czf /home/$USER/backuos/$(date +%u)-$(date +%w).tar.gz "/home/$USER/reports" " " > "/home/$USER/RBACKUP.txt"
+        echo " 0        1       *       *       1-4 "tar -czf /home/$USER/backups/$(date +%u)-$(date +%w).tar.gz "/home/$USER/reports" " " > "/home/$USER/RBACKUP.txt"
         crontab "/home/$USER/RBACKUP.txt"
 }
 
