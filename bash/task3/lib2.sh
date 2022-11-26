@@ -90,7 +90,7 @@ MANAGER_ADD()
 SYNC_REPORTS()
 {
         mkdir -p /home/manager/audit/reports
-        echo " 0        2       *       *       1-4 " sync /home/manager/audit/reports  /home/$USER/reports" " > "/home/$USER/sync.txt"
+        echo " 0        2       *       *       1-4  sync "/home/manager/audit/reports"  "/home/$USER/reports" " > "/home/$USER/sync.txt"
         crontab "/home/$USER/sync.txt"
 }
 
