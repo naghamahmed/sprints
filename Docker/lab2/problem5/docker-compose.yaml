@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  ghost:
+    image: ghost:latest
+    container_name: ghost-app
+    hostname: ghost
+    volumes:
+      - ./ghost/content:/var/lib/ghost/content
+    environment:
+      - NODE_ENV=development
+    restart: always
+    ports:
+      - "2368:2368"
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    volumes:
+      - ./dbdata:/var/lib/mysql:z  # Persist storage
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+    restart: always
