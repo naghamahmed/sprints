@@ -17,8 +17,8 @@ services:
     image: mysql:latest
     container_name: mysql
     volumes:
-      - ./dbdata:/var/lib/mysql:z  # Persist storage
-    environment:
+      - ./dbdata:/var/lib/mysql
+    environment
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_USER=ghost
     restart: always
