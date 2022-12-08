@@ -5,7 +5,6 @@ services:
     ports:
       - "5000"
     depends_on:
-      - web
       - db
 
   web:
@@ -15,7 +14,8 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "1111:80"
-
+    depends_on:
+      - app
   db:
     image: "mysql:latest"
     restart: always
