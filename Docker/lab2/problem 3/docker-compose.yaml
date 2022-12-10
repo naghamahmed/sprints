@@ -33,5 +33,3 @@ volumes:
     mysql: {}
 networks:
     app-network: {}
-~
-~
