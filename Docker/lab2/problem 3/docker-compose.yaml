@@ -6,6 +6,8 @@ services:
       - "5000"
     depends_on:
       - db
+    networks:
+      - app-network 
 
   web:
     image: nginx
@@ -16,6 +18,8 @@ services:
       - "1111:80"
     depends_on:
       - app
+    networks:
+      - app-network
   db:
     image: "mysql:latest"
     restart: always
@@ -23,7 +27,11 @@ services:
       - mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD:MY-PASS
+    networks:
+      - app-network  
 volumes:
     mysql: {}
+networks:
+    app-network: {}
 ~
 ~
