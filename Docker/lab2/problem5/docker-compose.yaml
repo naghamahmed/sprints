@@ -2,27 +2,33 @@ version: "3.9"
 services:
   ghost:
     image: ghost:latest
-    container_name: ghost-app
-    hostname: ghost
     volumes:
       - ./ghost/content:/var/lib/ghost/content
     environment:
-      - NODE_ENV=production
+      url: http://localhost:2368
+      database__client: mysql
+      database__connection__host: mysqldb
+      database__connection__database: ghost
+      database__connection__user: ghost
+      database__connection__password: pass
+      NODE_ENV: production
+      
     restart: always
     ports:
       - "2368:2368"
     depends_on:
-      - mysql
+      - mysqldb
     networks:
       - net
-  mysql:
+  mysqldb:
     image: mysql:latest
-    container_name: mysql
     volumes:
       - ./dbdata:/var/lib/mysql
-    environment
-      - MYSQL_ROOT_PASSWORD=pass
-      - MYSQL_USER=ghost
+    environment:
+      MYSQL_ROOT_PASSWORD: pass123
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: pass
     restart: always
     networks:
       - net
