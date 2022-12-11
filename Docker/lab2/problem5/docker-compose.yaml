@@ -13,6 +13,8 @@ services:
       - "2368:2368"
     depends_on:
       - mysql
+    networks:
+      - net
   mysql:
     image: mysql:latest
     container_name: mysql
@@ -22,3 +24,7 @@ services:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_USER=ghost
     restart: always
+    networks:
+      - net
+networks:
+  net: {}
