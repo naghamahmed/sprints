@@ -4,10 +4,11 @@
 #Calling the function
 
 def change_char(str, index, char):
-    return str[:index] + char + str[index+1:]
+    string= str[:index] + char + str[index+1:]
+    print (string)
 
 
-print(change_char("Abracadabra",5, "K"))  # return Abrackdabra
+change_char("Abracadabra",5, "K")  # return Abrackdabra
 
 
 
