@@ -5,14 +5,14 @@ def is_leap(year):
 
 
     if ((year % 400 == 0) and (year % 100 == 0)) or ((year % 4 == 0) and (year % 100 != 0)):
-        return("true")
+        return True
 
 
     else:
-        return("false")
+        return False
 
 year = int(input("Enter a year: "))
 print(is_leap(year))
 
-#print(is_leap(2000)) #return true
-#print(is_leap(1800)) #return false
+#print(is_leap(2000)) #return True
+#print(is_leap(1800)) #return False
