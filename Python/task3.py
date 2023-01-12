@@ -1,5 +1,5 @@
 #while loop will check the sequence of the string and replace each sequence with empty string untill the string becomes empty
-#If there is no pair present, then returns the True otherwise False
+#If there is no pair present, then returns the YES otherwise NO
 
 def isBalanced(string):
     while True:
