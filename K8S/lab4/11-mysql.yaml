@@ -1,0 +1,3 @@
+kubectl run db-pod --image=mysql:5.7
+
+Status: CrashLoopBackOff

@@ -1,0 +1,3 @@
+kubectl describe ds kube-proxy -n kube-system
+
+--> registry.k8s.io/kube-proxy:v1.26.1
