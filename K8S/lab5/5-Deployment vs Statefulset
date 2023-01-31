@@ -1,0 +1,9 @@
+A Deployment manages multiple pods by automating the creation, updating, and deletion of ReplicaSets.
+Deployment is a resource to deploy a stateless application
+In a deployment, the replicas all share a volume and PVC
+----
+A StatefulSet is a Kubernetes resource object that manages a set of pods with unique identities.
+Statefulset is a resource to deploy a stateful application each replica of the pod will have its own stat
+By assigning a persistent ID that is maintained even if the pod is rescheduled,
+a StatefulSet helps maintain the uniqueness and ordering of pods
+in a StatefulSet each pod has its own volume and PVC
