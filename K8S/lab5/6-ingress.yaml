@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: web2
+                name: web
                 port:
                   number: 8080
           - path: /v2
