@@ -1,4 +1,2 @@
 ---
-# vars file for test-role-1
-user: root
-workdir: /home/root/app
+# vars file for install-nexus

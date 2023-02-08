@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: nexus
+  remote_user: ec2-user
   roles:
-    - test-role-1
+    - install-nexus
