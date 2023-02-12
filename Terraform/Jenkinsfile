@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    tools{
+         terraform 'Terraform'
+    }
+    parameters {
+        choice(name: 'workspace', choices:['dev','prod'] )
+        choice(name: 'action', choices:['apply','destroy'])
+    }
+
+    stages {
+        stage('check') {
+            steps {
+                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/naghamahmed/Terraform.git'
+               
+            }
+        }
+
+        stage('terraform init') {
+            steps {
+                sh'terraform init'
+            }
+        }
+        
+        
+        stage('terraform action') {  
+            steps {
+                echo"${action}"
+                sh"terraform workspace select ${workspace}"
+                sh"terraform ${action} --auto-approve --var-file ${workspace}.tfvars "
+            }
+        } 
+    }
+
+}
