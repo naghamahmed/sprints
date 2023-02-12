@@ -9,20 +9,25 @@
       - wget
       - java-1.8.0-openjdk.x86_64
     state: present
+    
+- name: make directory 
+  file:
+    path: "{{ path }}"
+    state: directory    
 
 - name: Download nexus
   get_url:
     url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
-    dest: /home/ec2-user/appnexus.tar.gz
+    dest: "{{ path }}/nexus.tar.gz"
 
 - name: Unarchieve nexus
   unarchive:
-    src: appnexus.tar.gz
-    dest: /home/ec2-user
+    src: "{{ path }}/nexus.tar.gz"
+    dest: "{{ path }}"
     remote_src: yes
 
 - name: Rename nexus
-  command: "mv /home/ec2-user/nexus-3.47.0-01 /home/ec2-user/nexus"
+  command: "mv {{ path }}/nexus-3.47.1-01 {{ path }}/nexus"
 
 - name: Create nexus user
   user:
@@ -36,22 +41,22 @@
     owner: nexus
     group: nexus
   with_items:
-    - /home/ec2-user/nexus
-    - /home/ec2-user/sonatype-work
+    - "{{ path }}/nexus"
+    - "{{ path }}/sonatype-work"
 
 - name: Run_as_nexus_user
   lineinfile:
-    path: /home/ec2-user/nexus/bin/nexus.rc
+    path: "{{ path }}/nexus/bin/nexus.rc"
     regexp: '^#run_as_user=""'
     line: run_as_user="nexus"
 
 
-- name: Copy file
+- name: Copy service file
   template:
     src: nexus.service
     dest: /etc/systemd/system/nexus.service
 
-- name: Enable and start service nexus
+- name: Enable and start nexus service
   service:
     name: nexus
     state: started
