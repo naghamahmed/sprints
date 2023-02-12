@@ -10,7 +10,6 @@ resource "aws_db_instance" "rds" {
     engine               = "mysql"
     engine_version       = "5.7"
     instance_class       = "db.t2.micro"
-    username             = "Nagham"
     username             = var.username
     password             = var.password
     skip_final_snapshot  = true
