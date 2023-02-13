@@ -23,6 +23,14 @@ pipeline {
         }
         
         
+        stage('terraform workspace') {
+            steps {
+                sh 'terraform workspace new dev 2> /dev/null'
+                sh 'terraform workspace new prod 2> /dev/null'
+            }
+        }
+        
+        
         stage('terraform action') {  
             steps {
                 echo"${action}"
