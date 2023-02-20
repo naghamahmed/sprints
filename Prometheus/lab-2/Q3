@@ -1,0 +1,14 @@
+What is the maximum retention period to save data in Prometheus and how to increase it ?
+
+By default the retention is configured to 15 days. The amounts of data stored on disk depends on retention
+
+Increase it:
+- In the management node, open the /etc/sysconfig/prometheus file to edit.
+- set the needed retention period for the STORAGE_RETENTION option, and then save your changes. For example:
+
+  STORAGE_RETENTION="--storage.tsdb.retention.time=30d"
+
+- Restart the Prometheus service:
+
+  systemctl restart prometheus.service
+
