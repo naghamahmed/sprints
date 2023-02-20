@@ -1,0 +1,5 @@
+How To calculate the average request duration over the last 5 minutes from a histogram ?
+
+    rate(http_request_duration_seconds_sum[5m])
+  /
+    rate(http_request_duration_seconds_count[5m])
