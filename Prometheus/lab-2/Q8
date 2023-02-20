@@ -1,0 +1,10 @@
+What types of Monitoring can be done via Grafana?
+
+1.  Logs. powered by Grafana Loki.
+2.  Grafana. for visualization.
+3.  Traces. powered by Grafana Tempo.
+4.  Metrics. powered by Grafana Mimir and Prometheus.
+5.  Plugins. Connect Grafana to data sources, apps, and more.
+6.  Incident Response & Management. with Grafana Alerting, Grafana Incident, and Grafana OnCall.
+7.  Performance testing.
+8.  Grafana Cloud.
