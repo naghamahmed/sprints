@@ -1,0 +1,93 @@
+what is promtool and how i can use it ?
+
+- Promtool is a cli tool for the Prometheus monitoring system,
+- This small Golang binary can be used to quickly perform several troubleshooting actions and is packed with helpful subcommands.
+
+
+promtool [<flags>] <command> [<args> ...]
+
+
+COMMANDS
+
+check config <config-files>...
+  "Check if the config files are valid or not"
+  
+check web-config <web-config-files>...
+  "Check if the web config files are valid or not"
+  
+check rules <rule-files>...
+  "Check if the rule files are valid or not"
+  
+check metrics
+   "Pass Prometheus metrics over stdin to lint them for consistency and correctness.
+
+query instant [<flags>] <server> <expr>
+  "Run instant query"
+--time=TIME
+    "Query evaluation time (RFC3339 or Unix timestamp)"
+
+query range [<flags>] <server> <expr>
+  "Run range query"
+--header=HEADER
+   "Extra headers to send to server"
+--start=START
+   "Query range start time (RFC3339 or Unix timestamp)"
+--end=END
+   "Query range end time (RFC3339 or Unix timestamp)"
+--step=STEP
+    "Query step size (duration)"
+
+query series --match=MATCH [<flags>] <server>
+    "Run series query"
+--match=MATCH
+    "Series selector. Can be specified multiple times"
+--start=START
+    "Start time (RFC3339 or Unix timestamp)"
+--end=END
+    "End time (RFC3339 or Unix timestamp)"
+
+query labels [<flags>] <server> <name>
+    "Run labels query"
+--start=START
+    "Start time (RFC3339 or Unix timestamp)"
+--end=END
+    "End time (RFC3339 or Unix timestamp)"
+
+debug pprof <server>
+    "Fetch profiling debug information"
+    
+debug metrics <server>
+    "Fetch metrics debug information"
+    
+debug all <server>
+    "Fetch all debug information"
+    
+test rules <test-rule-file>...
+    "Unit tests for rules"
+    
+tsdb bench write [<flags>] [<file*>]
+    "Run a write performance benchmark"
+--out="benchout
+    "set output path"
+--metrics=10000
+    "Numberof metrics to read"
+
+tsdb analyze [<flags>] [<db path*>] [<block id>]
+    Analyze churn, label pair cardinality.
+--limit=20
+    How many items to show in each list.
+
+tsdb list [<flags>] [<db path*>]
+    List tsdb blocks.
+-r, --human-readable
+    Print human readable values.
+
+tsdb dump [<flags>] [<db path*>]
+    Dump samples from a TSDB.
+--min-time=-9223372036854775808
+    Minimum timestamp to dump.
+--max-time=9223372036854775807
+    Maximum timestamp to dump.
+
+tsdb create-blocks-from openmetrics <input file> [<output directory*>]
+    Import samples from OpenMetrics input and produce TSDB blocks. Please refer to the storage docs for more details.
