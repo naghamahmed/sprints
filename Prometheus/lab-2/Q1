@@ -1,0 +1,29 @@
+How do I trigger a Prometheus alert?
+
+1. Setup and configure AlertManagerin"/etc/alertmanager/alertmanager.yml".
+2. Configure the config file on Prometheus so it can talk to the AlertManagerin "/etc/prometheus/prometheus.yml".
+3. Define alert rules in Prometheus server configuration"ex: /etc/prometheus/rules.yml".
+ex: groups:
+    - name: rules
+      rules:
+      - record: job:up
+        expr: up{job="rules"}
+      - alert: InstanceDown
+        expr: job:up == 0
+4. Define alert mechanism in AlertManager to send alerts via Slack and Mail.
+ex:
+/etc/alertmanager/alertmanager.yml
+global:
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  receiver: 'slack'
+  group_interval: 15s
+  # repeat_interval: 45s
+
+receivers:
+- name: 'slack'
+  slack_configs:
+  - channel: "#sprints"
+    send_resolved: true
+    api_url: 'slacke-webhook-url'
