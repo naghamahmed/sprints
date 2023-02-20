@@ -1,0 +1,6 @@
+What is Thanos Prometheus?
+- Thanos is a set of components that can be composed into a highly available metric system with unlimited storage capacity,
+- which can be added seamlessly on top of existing Prometheus deployments.
+- By adding Thanos to Prometheus, users can build highly available metric systems with practically unlimited storage.
+- When deployed, Thanos provides features such as a global query view, high accessibility (HA),
+- And affordable access to historical data in a single binary.
