@@ -1,0 +1,8 @@
+What are the different PromQL data types available in Prometheus Expression language?
+
+PromQL subsequently has four data types:
+
+ 1. Floats (mostly scalars)
+ 2. Range vectors
+ 3. Instant vectors
+ 4. Time
