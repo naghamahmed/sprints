@@ -1,0 +1,12 @@
+What is the difference between node exporter and mysql exporter ?
+
+Node Exporter:
+  - Prometheus exporter for server level and OS level metrics with configurable metric collectors.
+  - It helps us in measuring various server resources such as RAM, disk space, and CPU utilization.
+  - Node exporter is a good solution to collect all the Linux server related metrics and statistics for monitoring.
+  - It collects the metrics on port 9100.
+  
+  Mysql Exporter:
+  - Prometheus MySQL Exporter is a client application used to get MySQL metrics and export to Prometheus server.
+  - It queries MySQL, scraps the data, and exposes the metrics.
+  - It collects the metrics on port 9104.
