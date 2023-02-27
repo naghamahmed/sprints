@@ -1,0 +1,7 @@
+in brief write about importance of nexus ?
+
+Nexus Repository Manager provides a central platform for storing build artifacts,
+saving us significant maintenance and hardware costs. I am very confident of its reliability.
+The main features of Nexus Repository are its ability to proxy, host, and manage software artifacts.
+It can serve as a central point for all of the artifacts that your team needs, and it can help to keep track of versions and dependencies. Additionally,
+Nexus Repository can help to speed up build times by caching frequently-used artifacts.
